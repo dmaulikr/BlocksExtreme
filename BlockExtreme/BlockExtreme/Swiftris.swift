@@ -48,6 +48,8 @@ class Swiftris {
     var score = 0
     var level = 1
     
+    
+    
     init() {
         fallingShape = nil
         nextShape = nil
@@ -59,6 +61,8 @@ class Swiftris {
             nextShape = Shape.random(PreviewColumn, startingRow: PreviewRow)
         }
         delegate?.gameDidBegin(self)
+        
+       
     }
     
     // #6
@@ -189,6 +193,7 @@ class Swiftris {
         
         score = 0
         level = 1
+        
     }
     
     func removeCompletedLines() -> (linesRemoved: Array<Array<Block>>, fallenBlocks: Array<Array<Block>>) {

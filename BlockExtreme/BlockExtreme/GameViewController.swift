@@ -14,10 +14,14 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     var scene: GameScene!
     var swiftris:Swiftris!
     
+    var seconds = 0
+    var timer:NSTimer?
+    
     var panPointReference:CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // Configure the view.
         let skView = view as! SKView
@@ -37,7 +41,6 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         skView.presentScene(scene)
         
         
-        
     }
 
     
@@ -45,9 +48,17 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
    
     @IBOutlet weak var levelLabel: UILabel!
 
+    @IBOutlet weak var timerLabel: UILabel!
+    
+    @IBAction func timerButton(sender: UIButton) {
+    print("timer button tapped")
+    
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
     
     
     @IBAction func didTap(sender: UITapGestureRecognizer) {
@@ -116,10 +127,34 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         }
     }
     
+    //countdown method
+    
+    func subtractTime() {
+        seconds--
+        timerLabel.text = "\(seconds)"
+        
+        if(seconds == 0)  {
+            
+            //timer?.invalidate()
+            swiftris.endGame()
+            
+            
+            
+        }
+    }
+    
     func gameDidBegin(swiftris: Swiftris) {
+        
+        seconds = 120
+        
+        if (timer == nil) {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)}
         
         levelLabel.text = "\(swiftris.level)"
         scoreLabel.text = "\(swiftris.score)"
+        timerLabel.text = "\(self.seconds)"
+        
+
         scene.tickLengthMillis = TickLengthLevelOne
         
         
