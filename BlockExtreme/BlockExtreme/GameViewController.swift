@@ -10,12 +10,12 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognizerDelegate {
-
+    
     var scene: GameScene!
     var swiftris:Swiftris!
     
-    var seconds = 0
-    var timer:NSTimer?
+        var seconds = 0
+        var timer:NSTimer?
     
     var panPointReference:CGPoint?
     
@@ -28,6 +28,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         skView.multipleTouchEnabled = false
         
         // Create and configure the scene.
+        
+        
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         
@@ -42,21 +44,26 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         
         
     }
-
+    
     
     @IBOutlet weak var scoreLabel: UILabel!
-   
+    
     @IBOutlet weak var levelLabel: UILabel!
-
+    
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBAction func timerButton(sender: UIButton) {
-    print("timer button tapped")
-    
+        print("timer button tapped")
+        
     }
     
+    @IBAction func backButton(sender: UIButton) {
+        timer?.invalidate()
+        swiftris.endGame()
+    }
     override func prefersStatusBarHidden() -> Bool {
         return true
+        
     }
     
     
@@ -67,7 +74,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     }
     
     @IBAction func didPan(sender: UIPanGestureRecognizer) {
-       
+        
         let currentPoint = sender.translationInView(self.view)
         if let originalPoint = panPointReference {
             // #3
@@ -88,8 +95,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     }
     
     @IBAction func didSwipe(sender: UISwipeGestureRecognizer) {
-    
-    swiftris.dropShape()
+        
+        swiftris.dropShape()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -127,34 +134,43 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         }
     }
     
+    //timer function
+    
+    
+        func timerOn() {
+    
+            seconds = 20
+    
+            if (timer == nil) {
+                timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)}
+        }
+    
     //countdown method
     
-    func subtractTime() {
-        seconds--
-        timerLabel.text = "\(seconds)"
-        
-        if(seconds == 0)  {
-            
-            //timer?.invalidate()
-            swiftris.endGame()
-            
-            
-            
+        func subtractTime() {
+            seconds--
+            timerLabel.text = "\(seconds)"
+            print(seconds)
+    
+            if(seconds == 0)  {
+
+                swiftris.endGame()
+                timer?.invalidate()
+    
+    
+    
+            }
         }
-    }
     
     func gameDidBegin(swiftris: Swiftris) {
         
-        seconds = 120
-        
-        if (timer == nil) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)}
+        timerOn()
         
         levelLabel.text = "\(swiftris.level)"
         scoreLabel.text = "\(swiftris.score)"
-        timerLabel.text = "\(self.seconds)"
+        timerLabel.text = "\(seconds)"
+    
         
-
         scene.tickLengthMillis = TickLengthLevelOne
         
         
@@ -193,8 +209,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         scene.stopTicking()
         scene.redrawShape(swiftris.fallingShape!) {
             swiftris.letShapeFall()
-        }   
-     scene.playSound("drop.mp3")
+        }
+        scene.playSound("drop.mp3")
     }
     
     func gameShapeDidLand(swiftris: Swiftris) {
