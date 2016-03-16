@@ -17,6 +17,17 @@ class MainViewController: UIViewController {
         
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "timedGame") {
+            
+            if let GVC: GameViewController = segue.destinationViewController as? GameViewController {
+                GVC.timedState = true }
+            
+        }
+    }
+    
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

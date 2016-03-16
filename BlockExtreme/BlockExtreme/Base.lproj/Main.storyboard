@@ -22,7 +22,7 @@
                                 <rect key="frame" x="172" y="294" width="119" height="100"/>
                                 <state key="normal" image="Timed"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="XTY-uH-eHG"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="timedGame" id="XTY-uH-eHG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwp-RH-tcB">
@@ -31,6 +31,9 @@
                                     <constraint firstAttribute="width" constant="116" id="Eyk-yl-fKR"/>
                                 </constraints>
                                 <state key="normal" image="Endless"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="endlessGame" id="aau-99-dXF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjA-hl-NYD">
                                 <rect key="frame" x="35" y="415" width="116" height="100"/>
@@ -140,11 +143,10 @@
                                 </subviews>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jP-a0-wom">
-                                <rect key="frame" x="232" y="474" width="68" height="22"/>
+                                <rect key="frame" x="232" y="464" width="68" height="22"/>
                                 <state key="normal" image="back_arrow"/>
                                 <connections>
                                     <action selector="backButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="qcZ-kt-4pz"/>
-                                    <segue destination="8rd-xr-FT7" kind="show" id="wEU-ut-nis"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -184,7 +186,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-59" y="237"/>
+            <point key="canvasLocation" x="-7" y="237"/>
         </scene>
     </scenes>
     <resources>
@@ -196,4 +198,7 @@
         <image name="logo" width="167" height="122"/>
         <image name="whitebg" width="84" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aau-99-dXF"/>
+    </inferredMetricsTieBreakers>
 </document>
