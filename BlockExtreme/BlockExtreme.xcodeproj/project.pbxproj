@@ -30,6 +30,7 @@
 		EDB629361C87D96700A5AAE4 /* SShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB629351C87D96700A5AAE4 /* SShape.swift */; };
 		EDB629381C87D9D800A5AAE4 /* ZShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB629371C87D9D800A5AAE4 /* ZShape.swift */; };
 		EDB6293A1C87DB6B00A5AAE4 /* Swiftris.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB629391C87DB6B00A5AAE4 /* Swiftris.swift */; };
+		EDCAB6761C915CF80049A69D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCAB6751C915CF80049A69D /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		EDB629351C87D96700A5AAE4 /* SShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SShape.swift; sourceTree = "<group>"; };
 		EDB629371C87D9D800A5AAE4 /* ZShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZShape.swift; sourceTree = "<group>"; };
 		EDB629391C87DB6B00A5AAE4 /* Swiftris.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftris.swift; sourceTree = "<group>"; };
+		EDCAB6751C915CF80049A69D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				EDB628C51C7ECF2D00A5AAE4 /* AppDelegate.swift */,
 				EDB628C91C7ECF2D00A5AAE4 /* GameScene.swift */,
 				EDB628CB1C7ECF2D00A5AAE4 /* GameViewController.swift */,
+				EDCAB6751C915CF80049A69D /* MainViewController.swift */,
 				EDB628CD1C7ECF2D00A5AAE4 /* Main.storyboard */,
 				EDB628D01C7ECF2D00A5AAE4 /* Assets.xcassets */,
 				EDB628D21C7ECF2D00A5AAE4 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 				EDB629261C8531E400A5AAE4 /* Array2D.swift in Sources */,
 				EDB629301C87D44E00A5AAE4 /* LineShape.swift in Sources */,
 				EDB629361C87D96700A5AAE4 /* SShape.swift in Sources */,
+				EDCAB6761C915CF80049A69D /* MainViewController.swift in Sources */,
 				EDB6292E1C87D35500A5AAE4 /* TShape.swift in Sources */,
 				EDB629281C85393000A5AAE4 /* Block.swift in Sources */,
 				EDB628CC1C7ECF2D00A5AAE4 /* GameViewController.swift in Sources */,

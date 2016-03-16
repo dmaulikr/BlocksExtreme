@@ -14,6 +14,8 @@ let TickLengthLevelOne = NSTimeInterval(600)
 
 class GameScene: SKScene {
     
+
+    
     let gameLayer = SKNode()
     let shapeLayer = SKNode()
     let LayerPosition = CGPoint(x: 6, y: -6)
@@ -23,7 +25,7 @@ class GameScene: SKScene {
     var lastTick:NSDate?
     
     var textureCache = Dictionary<String, SKTexture>()
-   
+    
     override func update(currentTime: CFTimeInterval) {
         guard let lastTick = lastTick else {
             return
@@ -35,6 +37,9 @@ class GameScene: SKScene {
         }
     }
     
+    
+
+    
     func startTicking() {
         lastTick = NSDate()
     }
@@ -42,11 +47,11 @@ class GameScene: SKScene {
     func stopTicking() {
         lastTick = nil
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("NSCoder not supported")
     }
-
+    
     override init(size: CGSize) {
         super.init(size: size)
         
@@ -68,9 +73,13 @@ class GameScene: SKScene {
         shapeLayer.addChild(gameBoard)
         gameLayer.addChild(shapeLayer)
         
-        runAction(SKAction.repeatActionForever(SKAction.playSoundFileNamed("theme.mp3", waitForCompletion: true)))
-
+        //remove action for key
+        //runAction(SKAction.repeatActionForever(SKAction.playSoundFileNamed("theme.mp3", waitForCompletion: true)))
+        
     }
+    
+    
+    
     
     func playSound(sound:String) {
         runAction(SKAction.playSoundFileNamed(sound, waitForCompletion: false))
@@ -189,5 +198,5 @@ class GameScene: SKScene {
         // #7
         runAction(SKAction.waitForDuration(longestDuration), completion:completion)
     }
-
+    
 }
