@@ -198,13 +198,13 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
         func timerOn() {
     
-            seconds = 20
+            seconds = 120
     
             if (timer == nil) {
                 timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)}
         }
     
-    //countdown method
+    //timed game countdown method
     
         func subtractTime() {
             seconds--
@@ -215,6 +215,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
 
                 swiftris.endGame()
                 timer?.invalidate()
+                saveHighscoreTimed()
               self.dismissViewControllerAnimated(true, completion: nil)
     
     
@@ -321,7 +322,27 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         
     }
     
-
+    func saveHighscoreTimed() {
+        
+        //check if user is signed in
+        if GKLocalPlayer.localPlayer().authenticated {
+            
+            var scoreReporter = GKScore(leaderboardIdentifier: "timedhighscore.com.jasonchan.BlockExtreme")
+            
+            scoreReporter.value = Int64(swiftris.score)
+            
+            var scoreArray: [GKScore] = [scoreReporter]
+            
+            GKScore.reportScores(scoreArray, withCompletionHandler: {(error) -> Void in
+                if error != nil {
+                    print("error")
+                }
+            })
+            
+        }
+        
+    }
+    
     
     
     
