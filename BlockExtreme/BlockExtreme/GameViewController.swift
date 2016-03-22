@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 import AVFoundation
+import GameKit
+
 
 class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognizerDelegate {
     
@@ -16,12 +18,20 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     var swiftris:Swiftris!
     var backgroundMusic : AVAudioPlayer?
     
-        var seconds = 0
+        var seconds = 999
         var timer:NSTimer?
     
     var panPointReference:CGPoint?
     
     var timedState = false
+
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var levelLabel: UILabel!
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +58,20 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         swiftris.beginGame()
         backgroundMusic?.play()
         
+        if timedState == false {
+            
+            timerLabel.text = "∞"
+            
+        }
+        
         // Present the scene.
         skView.presentScene(scene)
         
         
         
     }
+    
+    
     
     
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
@@ -74,11 +92,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         return audioPlayer
     }
     
-    @IBOutlet weak var scoreLabel: UILabel!
     
-    @IBOutlet weak var levelLabel: UILabel!
-    
-    @IBOutlet weak var timerLabel: UILabel!
     
 //    @IBAction func pauseButton(sender: AnyObject) {
 //    
@@ -93,9 +107,12 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     @IBAction func backButton(sender: UIButton) {
         timer?.invalidate()
-        swiftris.endGame()
+        
         backgroundMusic?.stop()
+        saveHighscore()
+        swiftris.endGame()
         pauseGame()
+        
         self.dismissViewControllerAnimated(true, completion: nil)
             
         
@@ -181,13 +198,13 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
         func timerOn() {
     
-            seconds = 20
+            seconds = 120
     
             if (timer == nil) {
                 timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)}
         }
     
-    //countdown method
+    //timed game countdown method
     
         func subtractTime() {
             seconds--
@@ -198,6 +215,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
 
                 swiftris.endGame()
                 timer?.invalidate()
+                saveHighscoreTimed()
               self.dismissViewControllerAnimated(true, completion: nil)
     
     
@@ -278,5 +296,54 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     func gameShapeDidMove(swiftris: Swiftris) {
         scene.redrawShape(swiftris.fallingShape!) {}
     }
+    
+    
+    //Mark: - GameCenterLeaderboard Functions
+    
+    //send high score to leaderboard
+    func saveHighscore() {
+        
+        //check if user is signed in
+        if GKLocalPlayer.localPlayer().authenticated {
+            
+            var scoreReporter = GKScore(leaderboardIdentifier: "highscore.com.jasonchan.BlockExtreme")
+            
+            scoreReporter.value = Int64(swiftris.score)
+            
+            var scoreArray: [GKScore] = [scoreReporter]
+            
+            GKScore.reportScores(scoreArray, withCompletionHandler: {(error) -> Void in
+                if error != nil {
+                    print("error")
+                }
+            })
+            
+        }
+        
+    }
+    
+    func saveHighscoreTimed() {
+        
+        //check if user is signed in
+        if GKLocalPlayer.localPlayer().authenticated {
+            
+            var scoreReporter = GKScore(leaderboardIdentifier: "timedhighscore.com.jasonchan.BlockExtreme")
+            
+            scoreReporter.value = Int64(swiftris.score)
+            
+            var scoreArray: [GKScore] = [scoreReporter]
+            
+            GKScore.reportScores(scoreArray, withCompletionHandler: {(error) -> Void in
+                if error != nil {
+                    print("error")
+                }
+            })
+            
+        }
+        
+    }
+    
+    
+    
     
 }
