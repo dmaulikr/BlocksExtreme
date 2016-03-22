@@ -42,6 +42,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUf-ZJ-J22">
                                 <rect key="frame" x="172" y="415" width="119" height="100"/>
                                 <state key="normal" image="Leaders"/>
+                                <connections>
+                                    <action selector="leaderBoardButton:" destination="8rd-xr-FT7" eventType="touchUpInside" id="1hX-3y-0Kb"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Uge-Ba-Woz">
                                 <rect key="frame" x="40" y="88" width="240" height="128"/>
@@ -62,6 +65,7 @@
                             <constraint firstItem="sUf-ZJ-J22" firstAttribute="leading" secondItem="NtU-Ki-c92" secondAttribute="leading" id="hqE-kf-d4P"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="naV-Zk-AyN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgK-Xe-n2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +203,6 @@
         <image name="whitebg" width="84" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aau-99-dXF"/>
+        <segue reference="XTY-uH-eHG"/>
     </inferredMetricsTieBreakers>
 </document>

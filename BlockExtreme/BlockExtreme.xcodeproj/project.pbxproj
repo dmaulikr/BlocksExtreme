@@ -13,6 +13,7 @@
 		ED6BE3ED1C895DB200BDA5E3 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED6BE3E81C895DB200BDA5E3 /* gameover.mp3 */; };
 		ED6BE3EE1C895DB200BDA5E3 /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED6BE3E91C895DB200BDA5E3 /* levelup.mp3 */; };
 		ED6BE3EF1C895DB200BDA5E3 /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED6BE3EA1C895DB200BDA5E3 /* theme.mp3 */; };
+		ED77F9001C9B9F2F00C59F69 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED77F8FF1C9B9F2F00C59F69 /* GameKit.framework */; };
 		EDB628C61C7ECF2D00A5AAE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB628C51C7ECF2D00A5AAE4 /* AppDelegate.swift */; };
 		EDB628CA1C7ECF2D00A5AAE4 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB628C91C7ECF2D00A5AAE4 /* GameScene.swift */; };
 		EDB628CC1C7ECF2D00A5AAE4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB628CB1C7ECF2D00A5AAE4 /* GameViewController.swift */; };
@@ -40,6 +41,7 @@
 		ED6BE3E81C895DB200BDA5E3 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		ED6BE3E91C895DB200BDA5E3 /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
 		ED6BE3EA1C895DB200BDA5E3 /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
+		ED77F8FF1C9B9F2F00C59F69 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EDB628C21C7ECF2D00A5AAE4 /* BlockExtreme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockExtreme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB628C51C7ECF2D00A5AAE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB628C91C7ECF2D00A5AAE4 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED77F9001C9B9F2F00C59F69 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +91,7 @@
 		EDB628B91C7ECF2D00A5AAE4 = {
 			isa = PBXGroup;
 			children = (
+				ED77F8FF1C9B9F2F00C59F69 /* GameKit.framework */,
 				EDB628C41C7ECF2D00A5AAE4 /* BlockExtreme */,
 				EDB628C31C7ECF2D00A5AAE4 /* Products */,
 			);
@@ -162,6 +166,11 @@
 					EDB628C11C7ECF2D00A5AAE4 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = YTB7DJCBLA;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -333,10 +342,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlockExtreme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jason-chan.BlockExtreme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -345,10 +356,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlockExtreme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jason-chan.BlockExtreme";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
