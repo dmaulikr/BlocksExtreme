@@ -38,6 +38,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjA-hl-NYD">
                                 <rect key="frame" x="35" y="415" width="116" height="100"/>
                                 <state key="normal" image="Achievements"/>
+                                <connections>
+                                    <action selector="achievButton:" destination="8rd-xr-FT7" eventType="touchUpInside" id="lw9-ns-0Gz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUf-ZJ-J22">
                                 <rect key="frame" x="172" y="415" width="119" height="100"/>

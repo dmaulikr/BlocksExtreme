@@ -231,9 +231,20 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         levelLabel.text = "\(swiftris.level)"
         scoreLabel.text = "\(swiftris.score)"
         timerLabel.text = "\(seconds)"
-    
         
         scene.tickLengthMillis = TickLengthLevelOne
+        
+        
+        //report achievements
+        
+        if swiftris.score <= 20 {
+            let achievement = GKAchievement(identifier: "com.jasonchan.BlockExtreme.25lines")
+            
+            achievement.percentComplete = Double(swiftris.score / 5)
+            achievement.showsCompletionBanner = true  // use Game Center's UI
+            
+            GKAchievement.reportAchievements([achievement], withCompletionHandler: nil)
+        }
         
         
         // The following is false when restarting a new game

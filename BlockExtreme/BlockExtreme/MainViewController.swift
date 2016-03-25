@@ -13,6 +13,10 @@ import GameKit
 class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     
     
+    @IBAction func achievButton(sender: UIButton) {
+        
+        showLeader()
+    }
     @IBAction func leaderBoardButton(sender: UIButton) {
     
         showLeader()
@@ -55,6 +59,10 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     
     
     //Mark: - Leaderboard functions
+    
+ 
+  
+    
     //shows leaderboard screen
     func showLeader() {
         var vc = self.view?.window?.rootViewController
