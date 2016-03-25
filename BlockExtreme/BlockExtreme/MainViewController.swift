@@ -15,7 +15,7 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func achievButton(sender: UIButton) {
         
-        showLeader()
+        showAchieve()
     }
     @IBAction func leaderBoardButton(sender: UIButton) {
     
@@ -56,18 +56,20 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
-    
-    //Mark: - Leaderboard functions
-    
- 
-  
+    func showAchieve() {
+        var vc = self.view?.window?.rootViewController
+        var gc = GKGameCenterViewController()
+        gc.gameCenterDelegate = self
+        gc.viewState = GKGameCenterViewControllerState.Achievements
+        vc?.presentViewController(gc, animated: true, completion: nil)
+    }
     
     //shows leaderboard screen
     func showLeader() {
         var vc = self.view?.window?.rootViewController
         var gc = GKGameCenterViewController()
         gc.gameCenterDelegate = self
+        gc.viewState = GKGameCenterViewControllerState.Leaderboards
         vc?.presentViewController(gc, animated: true, completion: nil)
     }
     

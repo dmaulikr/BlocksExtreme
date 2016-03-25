@@ -237,11 +237,20 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         
         //report achievements
         
-        if swiftris.score <= 20 {
-            let achievement = GKAchievement(identifier: "com.jasonchan.BlockExtreme.25lines")
+        if swiftris.score == 20 {
+            let achievement = GKAchievement(identifier: "30points.com.jasonchan.BlockExtreme")
             
             achievement.percentComplete = Double(swiftris.score / 5)
-            achievement.showsCompletionBanner = true  // use Game Center's UI
+            achievement.showsCompletionBanner = false
+            
+            GKAchievement.reportAchievements([achievement], withCompletionHandler: nil)
+        }
+        
+        if swiftris.score == 100 {
+            let achievement = GKAchievement(identifier: "100points.com.jasonchan.BlockExtreme")
+            
+            achievement.percentComplete = Double(swiftris.score / 5)
+            achievement.showsCompletionBanner = false
             
             GKAchievement.reportAchievements([achievement], withCompletionHandler: nil)
         }
