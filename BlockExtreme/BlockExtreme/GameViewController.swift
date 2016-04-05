@@ -44,6 +44,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         // Configure the view.
         let skView = view as! SKView
         skView.multipleTouchEnabled = false
+        skView.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction
+        skView.isAccessibilityElement = true
         
         // Create and configure the scene.
         
@@ -186,6 +188,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
             return
         }
         self.scene.addPreviewShapeToScene(newShapes.nextShape!) {}
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, newShapes.fallingShape?.voiceOverShapes)
         self.scene.movePreviewShape(fallingShape) {
             // #16
             self.view.userInteractionEnabled = true
@@ -260,6 +263,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         if swiftris.nextShape != nil && swiftris.nextShape!.blocks[0].sprite == nil {
             scene.addPreviewShapeToScene(swiftris.nextShape!) {
                 self.nextShape()
+                
+              
             }
         } else {
             nextShape()
@@ -271,6 +276,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         scene.stopTicking()
         
         scene.playSound("gameover.mp3")
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, "Game Over")
         scene.animateCollapsingLines(swiftris.removeAllBlocks(), fallenBlocks: Array<Array<Block>>()) {
             swiftris.beginGame()
         }
@@ -284,6 +290,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
             scene.tickLengthMillis -= 50
         }
         scene.playSound("levelup.mp3")
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, "Level Up")
     }
     
     func gameShapeDidDrop(swiftris: Swiftris) {
@@ -293,6 +300,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
             swiftris.letShapeFall()
         }
         scene.playSound("drop.mp3")
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, "Bottom")
     }
     
     func gameShapeDidLand(swiftris: Swiftris) {
@@ -307,6 +315,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
                 self.gameShapeDidLand(swiftris)
             }
             scene.playSound("bomb.mp3")
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, "Boom")
         } else {
             nextShape()
         }

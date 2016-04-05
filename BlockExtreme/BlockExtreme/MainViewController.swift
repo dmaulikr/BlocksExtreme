@@ -25,9 +25,6 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     
         showLeader()
         
-//        self.isAccessibilityElement = true
-//        self.accessibilityLabel = NSLocalizedString("Leaderboards", comment: "Leaderboards")
-//        self.accessibilityHint = NSLocalizedString("Select to View Leaderboards", comment: "Select to View Leader Board")
     }
     
     

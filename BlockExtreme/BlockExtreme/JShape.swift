@@ -7,6 +7,11 @@
 //
 
 class JShape:Shape {
+    
+    override var voiceOverShapes : String {
+        return "J shape"
+    }
+    
     /*
     
     Orientation 0

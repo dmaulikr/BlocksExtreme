@@ -7,6 +7,11 @@
 //
 
 class SquareShape:Shape {
+    
+    override var voiceOverShapes : String {
+        return "square"
+    }
+    
     /*
     // #9
     | 0•| 1 |

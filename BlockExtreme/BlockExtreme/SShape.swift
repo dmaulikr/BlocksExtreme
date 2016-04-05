@@ -7,6 +7,11 @@
 //
 
 class SShape:Shape {
+    
+    override var voiceOverShapes : String {
+        return "S shape"
+    }
+    
     /*
     
     Orientation 0

@@ -7,6 +7,11 @@
 //
 
 class LineShape:Shape {
+    
+    override var voiceOverShapes : String {
+        return "Line Shape"
+    }
+    
     /*
     Orientations 0 and 180:
     

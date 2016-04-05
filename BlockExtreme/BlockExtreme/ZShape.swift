@@ -6,6 +6,11 @@
 //  Copyright © 2016 Jason Chan. All rights reserved.
 //
 class ZShape:Shape {
+   
+    override var voiceOverShapes : String {
+        return "Z shape"
+    }
+    
     /*
     
     Orientation 0

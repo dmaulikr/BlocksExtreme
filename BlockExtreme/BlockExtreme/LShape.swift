@@ -7,6 +7,11 @@
 //
 
 class LShape:Shape {
+   
+    override var voiceOverShapes : String {
+        return "L Shape"
+    }
+    
     /*
     
     Orientation 0

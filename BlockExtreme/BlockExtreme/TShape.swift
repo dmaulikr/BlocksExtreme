@@ -7,6 +7,12 @@
 //
 
 class TShape:Shape {
+   
+    override var voiceOverShapes : String {
+        return "Tshape"
+    }
+    
+    
     /*
     Orientation 0
     

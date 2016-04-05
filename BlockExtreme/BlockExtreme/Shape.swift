@@ -61,6 +61,13 @@ class Shape: Hashable, CustomStringConvertible {
     // The column and row representing the shape's anchor point
     var column, row:Int
     
+    //shapes
+    var voiceOverShapes : String {
+        return "shape"
+    }
+    
+    
+    
     // Required Overrides
     // #2
     // Subclasses must override this property
