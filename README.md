@@ -8,7 +8,7 @@ A Tetris clone with Game Center integration and accessibility features that make
     <th class="tg-yw4l">Difficulty</th>
   </tr>
   <tr>
-    <td class="tg-yw4l">As a user, I want to play Swiftris Plus</td>
+    <td class="tg-yw4l">As a user, I want to play a Tetris Clone</td>
     <td class="tg-yw4l">2</td>
   </tr>
   <tr>
